@@ -119,6 +119,70 @@ if (panel && visual && window.matchMedia("(pointer:fine)").matches) {
   });
 }
 
+// ---- Reviews slider ----
+(function () {
+  const track = document.getElementById("revTrack");
+  if (!track) return;
+  const slides = Array.from(track.children);
+  const dotsWrap = document.getElementById("revDots");
+  const prev = document.getElementById("revPrev");
+  const next = document.getElementById("revNext");
+  const slider = document.getElementById("reviewSlider");
+  let i = 0;
+  let timer;
+
+  const dots = slides.map((_, n) => {
+    const b = document.createElement("button");
+    b.setAttribute("aria-label", "Go to review " + (n + 1));
+    b.addEventListener("click", () => go(n, true));
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  function render() {
+    track.style.transform = `translateX(${-i * 100}%)`;
+    dots.forEach((d, n) => d.classList.toggle("active", n === i));
+  }
+  function go(n, stop) {
+    i = (n + slides.length) % slides.length;
+    render();
+    if (stop) restart();
+  }
+  function auto() {
+    timer = setInterval(() => go(i + 1), 5000);
+  }
+  function restart() {
+    clearInterval(timer);
+    auto();
+  }
+
+  next.addEventListener("click", () => go(i + 1, true));
+  prev.addEventListener("click", () => go(i - 1, true));
+  slider.addEventListener("mouseenter", () => clearInterval(timer));
+  slider.addEventListener("mouseleave", auto);
+
+  // keyboard
+  slider.setAttribute("tabindex", "0");
+  slider.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") go(i + 1, true);
+    if (e.key === "ArrowLeft") go(i - 1, true);
+  });
+
+  // touch swipe
+  let x0 = null;
+  const vp = slider.querySelector(".slider-viewport");
+  vp.addEventListener("touchstart", (e) => (x0 = e.touches[0].clientX), { passive: true });
+  vp.addEventListener("touchend", (e) => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1), true);
+    x0 = null;
+  });
+
+  render();
+  auto();
+})();
+
 // ---- Course row / card spotlight follow ----
 document.querySelectorAll(".cell, .row").forEach((el) => {
   el.addEventListener("pointermove", (e) => {

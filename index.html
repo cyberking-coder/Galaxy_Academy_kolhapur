@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=8" />
+<link rel="stylesheet" href="styles.css?v=9" />
 </head>
 <body>
 
@@ -118,19 +118,41 @@
     <h2>What students say</h2>
     <p>4.9 ★ · 210 reviews on Google</p>
   </div>
-  <div class="quotes">
-    <blockquote>
-      <p>“Great tuition class with very supportive teachers. The teaching style is clear and easy to understand, and all doubts are explained properly.”</p>
-      <cite>Shivraj Patil · Engineering Student</cite>
-    </blockquote>
-    <blockquote>
-      <p>“This tuition has really helped me improve my understanding. The teacher explains every concept in a simple and clear way.”</p>
-      <cite>Amulya Ghodake · Science Student</cite>
-    </blockquote>
-    <blockquote>
-      <p>“Deep conceptual teaching made my NEET preparation easier. Galaxy Academy helped me score good marks and got me a great rank.”</p>
-      <cite>The Kolhapuri Vloger · NEET Aspirant</cite>
-    </blockquote>
+
+  <div class="slider" id="reviewSlider">
+    <button class="slider-arrow prev" id="revPrev" aria-label="Previous review">‹</button>
+
+    <div class="slider-viewport">
+      <div class="slider-track" id="revTrack">
+        <blockquote>
+          <p>“Great tuition class with very supportive teachers. The teaching style is clear and easy to understand, and all doubts are explained properly.”</p>
+          <cite><span class="av">S</span> Shivraj Patil · Engineering Student</cite>
+        </blockquote>
+        <blockquote>
+          <p>“This tuition has really helped me improve my understanding. The teacher explains every concept in a simple and clear way.”</p>
+          <cite><span class="av">A</span> Amulya Ghodake · Science Student</cite>
+        </blockquote>
+        <blockquote>
+          <p>“Deep conceptual teaching made my NEET preparation easier. Galaxy Academy helped me score good marks and got me a great rank. Do visit!”</p>
+          <cite><span class="av">K</span> The Kolhapuri Vloger · NEET Aspirant</cite>
+        </blockquote>
+        <blockquote>
+          <p>“The small batch sizes and supportive environment helped a lot. Personal attention from every teacher made a real difference for me.”</p>
+          <cite><span class="av">P</span> Priya · 12th Science</cite>
+        </blockquote>
+        <blockquote>
+          <p>“Excellent classrooms and multitalented teachers for every branch. The staff is polite, helpful and always ready to clear doubts.”</p>
+          <cite><span class="av">R</span> Rahul · Diploma Student</cite>
+        </blockquote>
+        <blockquote>
+          <p>“Nice experience for 11th and 12th science. The personal attention of the staff really stands out — highly recommended.”</p>
+          <cite><span class="av">N</span> Neha · 11th Science</cite>
+        </blockquote>
+      </div>
+    </div>
+
+    <button class="slider-arrow next" id="revNext" aria-label="Next review">›</button>
+    <div class="slider-dots" id="revDots" aria-label="Review navigation"></div>
   </div>
 </section>
 
@@ -171,6 +193,6 @@
   </svg>
 </a>
 
-<script src="script.js?v=8"></script>
+<script src="script.js?v=9"></script>
 </body>
 </html>

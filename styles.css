@@ -197,20 +197,45 @@ h1, h2, h3, h4 { font-family: "Fraunces", serif; font-weight: 500; line-height: 
 .cell h4 { font-size: 1.12rem; margin-bottom: 8px; color: var(--c); }
 .cell p { color: var(--soft); font-size: .96rem; }
 
-/* Quotes */
-.quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+/* Reviews slider */
+.slider { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; }
+.slider-viewport { overflow: hidden; border-radius: 18px; }
+.slider-track { display: flex; transition: transform .55s cubic-bezier(.4,0,.2,1); will-change: transform; }
 blockquote {
-  padding: 28px 26px; border-radius: 16px; background: #fff; border: 1px solid var(--line);
-  position: relative;
+  flex: 0 0 100%; box-sizing: border-box;
+  padding: 40px clamp(24px, 5vw, 56px); background: #fff; border: 1px solid var(--line);
+  border-radius: 18px; position: relative; text-align: center;
 }
 blockquote::before {
-  content: "★★★★★"; display: block; letter-spacing: 2px; color: #f5a623; margin-bottom: 14px; font-size: .95rem;
+  content: "★★★★★"; display: block; letter-spacing: 3px; color: #f5a623; margin-bottom: 18px; font-size: 1.05rem;
 }
-blockquote:nth-child(1) { border-bottom: 3px solid var(--accent); }
-blockquote:nth-child(2) { border-bottom: 3px solid var(--accent-2); }
-blockquote:nth-child(3) { border-bottom: 3px solid var(--accent-3); }
-blockquote p { font-family: "Fraunces", serif; font-size: 1.12rem; line-height: 1.5; }
-blockquote cite { display: block; margin-top: 18px; font-style: normal; font-size: .86rem; color: var(--soft); font-weight: 500; }
+blockquote::after {
+  content: "“"; position: absolute; top: 6px; left: 22px;
+  font-family: "Fraunces", serif; font-size: 5rem; color: color-mix(in srgb, var(--accent) 12%, transparent); line-height: 1;
+}
+blockquote p { font-family: "Fraunces", serif; font-size: clamp(1.1rem, 2.4vw, 1.5rem); line-height: 1.5; max-width: 720px; margin: 0 auto; }
+blockquote cite { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; font-style: normal; font-size: .9rem; color: var(--soft); font-weight: 600; }
+.av { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-family: "Fraunces", serif; font-weight: 600; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+
+.slider-arrow {
+  width: 46px; height: 46px; border-radius: 50%; cursor: pointer; flex-shrink: 0;
+  border: 1px solid var(--line); background: #fff; color: var(--accent); font-size: 1.6rem; line-height: 1;
+  display: grid; place-items: center; transition: background .2s, color .2s, transform .2s;
+  box-shadow: 0 10px 24px -14px rgba(22,41,92,.5);
+}
+.slider-arrow:hover { background: var(--accent); color: #fff; transform: scale(1.06); }
+.slider-dots { grid-column: 2; justify-self: center; display: flex; gap: 9px; margin-top: 24px; }
+.slider-dots button {
+  width: 9px; height: 9px; border-radius: 50%; border: 0; cursor: pointer; padding: 0;
+  background: color-mix(in srgb, var(--accent) 22%, transparent); transition: width .3s, background .3s;
+}
+.slider-dots button.active { width: 26px; border-radius: 6px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+
+@media (max-width: 600px) {
+  .slider { grid-template-columns: 1fr; }
+  .slider-arrow { display: none; }
+  .slider-dots { grid-column: 1; }
+}
 
 /* Contact */
 .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
