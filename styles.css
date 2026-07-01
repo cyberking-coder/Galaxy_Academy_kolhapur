@@ -46,6 +46,7 @@ h1, h2, h3, h4 { font-family: "Fraunces", serif; font-weight: 500; line-height: 
 .nav-links > a.active::after { width: 100%; }
 .nav-links > a.active { color: var(--accent); }
 .nav-cta-mobile { display: none; }
+.nav .btn-dark, .nav-links a.btn-dark { color: #fff; }
 
 .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 6px; }
 .menu-toggle span { width: 24px; height: 2px; background: var(--accent); border-radius: 2px; transition: transform .3s, opacity .3s; }
