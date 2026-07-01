@@ -38,7 +38,7 @@ navLinks.querySelectorAll("a").forEach((a) =>
 
 // ---- Reveal on scroll ----
 const revealEls = document.querySelectorAll(
-  ".section-head, .row, .cell, blockquote, .contact-info, .contact-map, .hero-copy, .hero-visual"
+  ".section-head, .feature, .course, .step, blockquote, .contact-info, .contact-map, .hero-copy, .hero-visual, .cta-inner"
 );
 revealEls.forEach((el, i) => {
   el.classList.add("reveal");
@@ -105,7 +105,7 @@ const spyIO = new IntersectionObserver(
 sections.forEach((s) => spyIO.observe(s));
 
 // ---- Hero panel parallax tilt (pointer) ----
-const panel = document.querySelector(".hero-panel");
+const panel = document.querySelector(".hero-card");
 const visual = document.querySelector(".hero-visual");
 if (panel && visual && window.matchMedia("(pointer:fine)").matches) {
   visual.addEventListener("pointermove", (e) => {
@@ -184,7 +184,7 @@ if (panel && visual && window.matchMedia("(pointer:fine)").matches) {
 })();
 
 // ---- Course row / card spotlight follow ----
-document.querySelectorAll(".cell, .row").forEach((el) => {
+document.querySelectorAll(".course").forEach((el) => {
   el.addEventListener("pointermove", (e) => {
     const r = el.getBoundingClientRect();
     el.style.setProperty("--mx", ((e.clientX - r.left) / r.width) * 100 + "%");
