@@ -1,12 +1,12 @@
 :root {
-  --bg: #fffdf9;
-  --muted-bg: #f4f1ff;
-  --ink: #17151f;
-  --soft: #625d70;
-  --line: #ece7f5;
-  --accent: #6d28d9;
-  --accent-2: #e11d69;
-  --accent-3: #0d9488;
+  --bg: #fdf8ef;
+  --muted-bg: #f4ecdb;
+  --ink: #16295c;
+  --soft: #5a6274;
+  --line: #ece3d0;
+  --accent: #16295c;      /* navy */
+  --accent-2: #e0a021;    /* gold */
+  --accent-3: #5c9a3a;    /* green */
   --maxw: 1080px;
 }
 
